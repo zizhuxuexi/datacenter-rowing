@@ -6,6 +6,7 @@ require (
 	github.com/CocaineCong/grpc-todolist v0.0.0-20230521083729-f038310969d2
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.9.0
+	github.com/hashicorp/consul/api v1.20.0
 	github.com/sirupsen/logrus v1.9.2
 	github.com/spf13/viper v1.15.0
 	go.etcd.io/etcd/client/v3 v3.5.9
@@ -31,7 +32,6 @@ require (
 	github.com/goccy/go-json v0.10.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
-	github.com/hashicorp/consul/api v1.20.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-hclog v1.2.0 // indirect
 	github.com/hashicorp/go-immutable-radix v1.3.1 // indirect

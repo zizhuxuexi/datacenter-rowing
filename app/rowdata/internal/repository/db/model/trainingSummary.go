@@ -3,7 +3,7 @@ package model
 import "time"
 
 type TrainingSummary struct {
-	TrainingId      uint      `gorm:"<-:false;primary_key;AUTO_INCREMENT"`
+	TrainingId      uint      `gorm:"<-:false;primary_key;AUTO_INCREMENT;comment:'训练ID主键'"`
 	TrainingName    string    `gorm:"type:varchar(50);not null;comment:'训练名称'"`
 	TrainDate       time.Time `gorm:"type:Date;not null;comment:'训练日期'"`
 	EventGender     string    `gorm:"type:char(1);not null;comment:'项目选手性别'"`
