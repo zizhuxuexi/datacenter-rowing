@@ -14,7 +14,7 @@ type RowDataUploadInfo struct {
 type TrainingSummary struct {
 	TrainingId      uint      //训练ID主键
 	TrainingName    string    //训练名称
-	TrainDate       time.Time //训练日期`
+	TrainingDate    time.Time //训练日期`
 	EventGender     string    //项目选手性别
 	EventPeopleType string    //项目总人数与类型
 	EventScale      string    //项目量级
@@ -26,6 +26,25 @@ type TrainingSummary struct {
 	Coach           string    //教练员名称
 	SampleCount     int       //采样桨频的数目
 	Remark          string    //备注
+}
+
+type TrainingSummaryGet struct {
+	TrainingSummary    TrainingSummary
+	Set                bool
+	SetTrainingId      bool
+	SetTrainingName    bool
+	SetTrainingDate    bool
+	SetEventGender     bool
+	SetEventPeopleType bool
+	SetEventScale      bool
+	SetEvent           bool
+	SetWeather         bool
+	SetTemp            bool
+	SetWindDir         bool
+	SetLoc             bool
+	SetCoach           bool
+	SetSampleCount     bool
+	SetRemark          bool
 }
 
 type AthleteTrainingData struct {
@@ -40,6 +59,22 @@ type AthleteTrainingData struct {
 	OarInboard        float32
 	OarLength         float32
 	OarBladeLength    float32
+}
+
+type AthleteTrainingDataGet struct {
+	AthleteTrainingData  AthleteTrainingData
+	Set                  bool
+	SetAthleteTrainingId bool
+	SetTrainingId        bool
+	SetName              bool
+	SetGender            bool
+	SetSeat              bool
+	SetSide              bool
+	SetHeight            bool
+	SetWeight            bool
+	SetOarInboard        bool
+	SetOarLength         bool
+	SetOarBladeLength    bool
 }
 
 type SampleMetrics struct {

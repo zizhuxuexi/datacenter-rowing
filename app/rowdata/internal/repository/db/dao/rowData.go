@@ -73,7 +73,7 @@ func (dao *RowDataDao) GetTrainingSummary(req *pb.TrainingSummaryGetRequset) (ts
 			query = query.Where("training_name=?", req.TrainingSummary.TrainingName)
 		}
 		if req.SetTrainingDate {
-			query = query.Where("training_date=?", req.TrainingSummary.TrainDate.AsTime())
+			query = query.Where("training_date=?", req.TrainingSummary.TrainingDate.AsTime())
 		}
 		if req.SetEventGender {
 			query = query.Where("event_gender=?", req.TrainingSummary.EventGender)
@@ -126,7 +126,7 @@ func BuildTrainingSummary(item model.TrainingSummary) *pb.TrainingSummaryModel {
 	trainingSummaryModel := pb.TrainingSummaryModel{
 		TrainingId:      uint32(item.TrainingId),
 		TrainingName:    item.TrainingName,
-		TrainDate:       timestamppb.New(item.TrainingDate),
+		TrainingDate:    timestamppb.New(item.TrainingDate),
 		EventGender:     item.EventGender,
 		EventPeopleType: item.EventPeopleType,
 		EventScale:      item.EventScale,
@@ -862,7 +862,11 @@ func (dao *RowDataDao) AddSampleMetrics(req *pb.SampleMetricsModel) (uint, error
 }
 
 func (dao *RowDataDao) GetSampleMetricsByAthleteTrainingId(req *pb.SampleMetricsGetByAthleteTrainingIdRequest) (sm []*model.SampleMetrics, err error) {
-	err = dao.Model(&model.SampleMetrics{}).Where("athlete_training_id=?", req.AthleteTrainingId).Find(&sm).Error
+	query := dao.Model(&model.SampleMetrics{})
+	if req.Set {
+		query = query.Where("athlete_training_id=?", req.AthleteTrainingId)
+	}
+	err = query.Find(&sm).Error
 	return
 }
 

@@ -198,6 +198,8 @@ message athleteTrainingDataGetResponse{
 message sampleMetricsGetByAthleteTrainingIdRequest{
     //@inject_tag: json:"athlete_training_id"
   uint32 AthleteTrainingId=1;
+  // @inject_tag: json:"set"
+  bool Set=2;
 }
 
 message sampleMetricsGetByAthleteTrainingIdResponse{

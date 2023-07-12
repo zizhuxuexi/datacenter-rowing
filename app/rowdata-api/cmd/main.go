@@ -28,11 +28,17 @@ func main() {
 	router := gin.Default()
 	//router.MaxMultipartMemory = 8 << 20
 
-	//router.POST("/rowdata", rowDataController.UploadRowData)
-	// router.POST("/rowdata", rowDataController.UploadMultiRowData)
 	router.POST("/rowdata", func(ctx *gin.Context) {
 		rowDataController.UploadMultiRowData(ctx, client) // 调用方法
-		ctx.JSON(200, gin.H{"message": "UploadJSON", "status": 200})
+	})
+	router.GET("/rowdata", func(ctx *gin.Context) {
+		rowDataController.FindTrainingSummary(ctx, client)
+	})
+	router.GET("/athleteTrainingData", func(ctx *gin.Context) {
+		rowDataController.FindAthleteTrainingData(ctx, client)
+	})
+	router.GET("/sampleMetrics", func(ctx *gin.Context) {
+		rowDataController.FindSampleMetricsByAthleteTrainingId(ctx, client)
 	})
 
 	router.Run(":10002")

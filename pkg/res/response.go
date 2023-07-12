@@ -23,5 +23,4 @@ type TokenData struct {
 type CommonResponse struct {
 	Code uint32
 	Msg  string
-	Data interface{}
 }

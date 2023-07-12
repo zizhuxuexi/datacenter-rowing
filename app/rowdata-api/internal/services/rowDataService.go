@@ -81,7 +81,7 @@ func (s *RowDataService) ProcessExcel(filename string, uploadInfo *model.RowData
 
 	trainingSummary := model.TrainingSummary{
 		TrainingName:    trainingName,
-		TrainDate:       trainingDate,
+		TrainingDate:    trainingDate,
 		EventGender:     eventGender,
 		EventPeopleType: eventPeopleType,
 		EventScale:      eventScale,
@@ -153,7 +153,7 @@ func (s *RowDataService) ProcessExcels(filenames []string, uploadInfo *model.Row
 
 	trainingSummary := model.TrainingSummary{
 		TrainingName:    trainingName,
-		TrainDate:       trainingDate,
+		TrainingDate:    trainingDate,
 		EventGender:     eventGender,
 		EventPeopleType: eventPeopleType,
 		EventScale:      eventScale,
@@ -167,8 +167,8 @@ func (s *RowDataService) ProcessExcels(filenames []string, uploadInfo *model.Row
 		Remark:          uploadInfo.Remark,
 	}
 
-	addResp := grpc.AddTrainingSummary(client, trainingSummary)
-	trainingId := addResp.Data.(struct{ TrainingId uint32 }).TrainingId
+	//这里的状态码 之后考虑怎么优化
+	_, trainingId := grpc.AddTrainingSummary(client, trainingSummary)
 
 	if err := excel.Close(); err != nil {
 		fmt.Println(err)
@@ -258,8 +258,7 @@ func (s *RowDataService) ProcessAthleteTrainingData(filename string, trainingId 
 		OarBladeLength: float32(oarBladeLength),
 	}
 
-	addresp := grpc.AddAthleteTrainingData(client, athletetrainingdata)
-	athleteTrainingId := addresp.Data.(struct{ AthleteTrainingId uint32 }).AthleteTrainingId
+	_, athleteTrainingId := grpc.AddAthleteTrainingData(client, athletetrainingdata)
 
 	sampleTimes, err := excel.GetCellValue("Summary", "A8")
 	if err != nil {
@@ -422,6 +421,21 @@ func (s *RowDataService) ProcessAthleteTrainingData(filename string, trainingId 
 		}
 
 	}
+}
+
+func (s *RowDataService) GetTrainingSummary(findReq model.TrainingSummaryGet, client pb.RowDataServiceClient) *[]model.TrainingSummary {
+	_, tsArr := grpc.GetTrainingSummary(client, findReq)
+	return tsArr
+}
+
+func (s *RowDataService) GetAthleteTrainingData(findReq model.AthleteTrainingDataGet, client pb.RowDataServiceClient) *[]model.AthleteTrainingData {
+	_, atdArr := grpc.GetAthleteTrainingData(client, findReq)
+	return atdArr
+}
+
+func (s *RowDataService) GetSampleMetricsByAthleteTrainingId(id uint32, set bool, client pb.RowDataServiceClient) *[]model.SampleMetrics {
+	_, smArr := grpc.GetSampleMetricsByAthleteTrainingId(client, id, set)
+	return smArr
 }
 
 func IsZero(data string) string {

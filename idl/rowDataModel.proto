@@ -10,8 +10,8 @@ message TrainingSummaryModel{
   uint32 TrainingId=1;
   //@inject_tag: json:"training_name"
   string TrainingName=2;
-  //@inject_tag: json:"train_date"
-  google.protobuf.Timestamp TrainDate=3;
+  //@inject_tag: json:"training_date"
+  google.protobuf.Timestamp TrainingDate=3;
   //@inject_tag: json:"event_gender"
   string EventGender=4;
   //@inject_tag: json:"event_people_type"
