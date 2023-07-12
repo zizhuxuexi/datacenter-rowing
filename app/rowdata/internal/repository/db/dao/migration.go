@@ -2,6 +2,7 @@ package dao
 
 import (
 	"fmt"
+
 	"github.com/zizhuxuexi/datacenter-rowing/app/rowdata/internal/repository/db/model"
 )
 
@@ -10,6 +11,8 @@ func migration() {
 	err := _db.Set("gorm:table_options", "charset=utf8mb4").
 		AutoMigrate(
 			&model.TrainingSummary{},
+			&model.AthleteTrainingData{},
+			&model.SampleMetrics{},
 		)
 	if err != nil {
 		fmt.Println("migration err", err)

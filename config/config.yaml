@@ -12,32 +12,17 @@ mysql:
   password: rootroot
   charset: utf8mb4
 
-redis:
-  address: 127.0.0.1:6379
-  password:
-
-etcd:
-  address: 127.0.0.1:2379
 
 consul:
-  address: 127.0.0.1:8500
+  host: 127.0.0.1
+  port: 8500
 
 services:
-  gateway:
-    name: gateway
-    loadBalance: true
-    addr:
-      - 127.0.0.1:10001
-  user:
-    name: user
+  row-data:
+    name: row-data
     loadBalance: false
-    addr:
-      - 127.0.0.1:10002
-  task:
-    name: task
-    loadBalance: false
-    addr:
-      - 127.0.0.1:10003
+    addr: 127.0.0.1:10001
+
 
 domain:
   user:

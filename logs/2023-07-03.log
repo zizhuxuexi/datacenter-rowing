@@ -1,0 +1,1 @@
+time="2023-07-03 04:42:39" level=error msg="Insert User Error:unsupported data type: 0x1400035c560: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")"

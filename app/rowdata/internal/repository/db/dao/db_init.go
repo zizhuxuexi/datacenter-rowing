@@ -3,6 +3,7 @@ package dao
 import (
 	"context"
 	"fmt"
+	"os"
 	"strings"
 	"time"
 
@@ -17,6 +18,22 @@ import (
 )
 
 var _db *gorm.DB
+
+func InitDB_k8s() {
+	mConfig := config.Conf.MySQL
+	host := os.Getenv("MYSQL_HOST")
+	port := os.Getenv("MYSQL_PORT")
+	database := mConfig.Database
+	username := mConfig.UserName
+	password := mConfig.Password
+	charset := mConfig.Charset
+	dsn := strings.Join([]string{username, ":", password, "@tcp(", host, ":", port, ")/", database, "?charset=" + charset + "&parseTime=true"}, "")
+	err := Database(dsn)
+	if err != nil {
+		fmt.Println(err)
+		logger2.LogrusObj.Error(err)
+	}
+}
 
 func InitDB() {
 	mConfig := config.Conf.MySQL

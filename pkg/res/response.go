@@ -19,3 +19,9 @@ type TokenData struct {
 	User  interface{} `json:"user"`
 	Token string      `json:"token"`
 }
+
+type CommonResponse struct {
+	Code uint32
+	Msg  string
+	Data interface{}
+}

@@ -1,0 +1,236 @@
+syntax = "proto3";
+import "rowDataModel.proto";
+import "google/protobuf/timestamp.proto";
+
+package idl;
+option go_package="./pb/rowdata;rowdata";
+
+//用于添加trainingSummary
+message trainingSummaryAddRequest{
+  //@inject_tag: json:"training_name"
+  string TrainingName=1;
+  //@inject_tag: json:"train_date"
+  google.protobuf.Timestamp TrainDate=2;
+  //@inject_tag: json:"event_gender"
+  string EventGender=3;
+  //@inject_tag: json:"event_people_type"
+  string EventPeopleType=4;
+  //@inject_tag: json:"event_scale"
+  string EventScale=5;
+  //@inject_tag: json:"event"
+  string Event=6;
+  //@inject_tag: json:"weather"
+  string Weather=7;
+  //@inject_tag: json:"temp"
+  int32 Temp=8;
+  //@inject_tag: json:"wind_dir"
+  string WindDir=9;
+  //@inject_tag: json:"loc"
+  string Loc=10;
+  //@inject_tag: json:"coach"
+  string Coach=11;
+  //@inject_tag: json:"sample_count"
+  int32 SampleCount=12;
+  //@inject_tag: json:"remark"
+  string Remark=13;
+}
+
+message trainingSummaryGetRequset{
+  //@inject_tag: json:"training_summary"
+  TrainingSummaryModel TrainingSummary=1;
+  //@inject_tag: json:"set"
+  bool Set=2;
+  //@inject_tag: json:"set_training_id"
+  bool SetTrainingId=3;
+  //@inject_tag: json:"set_training_name"
+  bool SetTrainingName=4;
+  //@inject_tag: json:"set_training_date"
+  bool SetTrainingDate=5;
+  //@inject_tag: json:"set_event_gender"
+  bool SetEventGender=6;
+  //@inject_tag: json:"set_event_people_type"
+  bool SetEventPeopleType=7;
+  //@inject_tag: json:"set_event_scale"
+  bool SetEventScale=8;
+  //@inject_tag: json:"set_event"
+  bool SetEvent=9;
+  //@inject_tag: json:"set_weather"
+  bool SetWeather=10;
+  //@inject_tag: json:"set_temp"
+  bool SetTemp=11;
+  //@inject_tag: json:"set_wind_dir"
+  bool SetWindDir=12;
+  //@inject_tag: json:"set_loc"
+  bool SetLoc=13;
+  //@inject_tag: json:"set_coach"
+  bool SetCoach=14;
+  //@inject_tag: json:"set_sample_count"
+  bool SetSampleCount=15;
+  //@inject_tag: json:"set_remark"
+  bool SetRemark=16;
+}
+
+message trainingSummaryGetByTrainingNameRequest{
+  //@inject_tag: json:"training_name"
+  string TrainingName=1;
+}
+
+message trainingSummaryGetByTrainDateRequest{
+  //@inject_tag: json:"train_date"
+  google.protobuf.Timestamp TrainDate=1;
+}
+
+message trainingSummaryGetByEventRequest{
+  //@inject_tag: json:"event"
+  string Event=1;
+}
+
+message trainingSummaryResponse{
+  //@inject_tag: json:"training_summary"
+  TrainingSummaryModel trainingSummaryDetail=1;
+  //@inject_tag: json:"code"
+  uint32 Code=2;
+}
+
+message trainingSummaryGetResponse{
+  //@inject_tag: json:"training_summary"
+  repeated TrainingSummaryModel trainingSummary=1;
+  //@inject_tag: "json:code"
+  uint32 Code=2;
+}
+
+message trainingSummaryAddResponse{
+  //@inject_tag: json:"code"
+  uint32  Code = 1;
+  //@inject_tag: json:"msg"
+  string  Msg = 2;
+  //@inject_tag: json:"data"
+  string Data = 3;
+  //@inject_tag: json:"training_id"
+  uint32 TrainingId=4;
+}
+
+
+//用于添加AthleteTrainingData
+message athleteTrainingDataAddRequest{
+  //@inject_tag: json:"training_id"
+  uint32 TrainingId=1;
+  //@inject_tag: json:"name"
+  string Name=2;
+  //@inject_tag: json:"gender"
+  string Gender=3;
+  //@inject_tag: json:"seat"
+  int32 Seat=4;
+  //@inject_tag: json:"side"
+  int32 Side=5;
+  //@inject_tag: json:"height"
+  float Height=6;
+  //@inject_tag: json:"weight"
+  float Weight=7;
+  //@inject_tag: json:"oar_inboard"
+  float OarInboard=8;
+  //@inject_tag: json:"oar_length"
+  float OarLength=9;
+  //@inject_tag: json:"oar_blade_length"
+  float OarBladeLength=10;
+}
+
+message athleteTrainingDataGetRequest{
+  //@inject_tag: json"athlete_training_data"
+  AthleteTrainingDataModel AthleteTrainingData=1;
+  //@inject_tag: json:"set"
+  bool Set=2;
+  //@inject_tag: json:"set_athlete_training_id"
+  bool SetAthleteTrainingId=3;
+  //@inject_tag: json:"set_training_id"
+  bool SetTrainingId=4;
+  //@inject_tag: json:"set_name"
+  bool SetName=5;
+  //@inject_tag: json:"set_gender"
+  bool SetGender=6;
+  //@inject_tag: json:"set_seat"
+  bool SetSeat=7;
+  //@inject_tag: json:"set_side"
+  bool SetSide=8;
+  //@inject_tag: json:"set_height"
+  bool SetHeight=9;
+  //@inject_tag: json:"set_weight"
+  bool SetWeight=10;
+  //@inject_tag: json:"set_oar_inboard"
+  bool SetOarInboard=11;
+  //@inject_tag: json:"set_oar_length"
+  bool SetOarLength=12;
+  //@inject_tag: json:"set_oar_blade_length"
+  bool SetOarBladeLength=13;
+}
+
+message athleteTrainingDataGetByName{
+  //@inject_tag: json:"name"
+  string Name=1;
+}
+
+message athleteTrainingDataAddResponse{
+  //@inject_tag: json:"code"
+  uint32  Code = 1;
+  //@inject_tag: json:"msg"
+  string  Msg = 2;
+  //@inject_tag: json:"data"
+  string Data = 3;
+  //@inject_tag: json:"athlete_training_id"
+  uint32 AthleteTrainingId=4;
+}
+
+message athleteTrainingDataResponse{
+  //@inject_tag: json:"athlete_training_data"
+  repeated AthleteTrainingDataModel athleteTrainingDataDetail=1;
+  //@inject_tag: json:"code"
+  uint32 Code=2;
+}
+
+message athleteTrainingDataGetResponse{
+  //@inject_tag: json:"athlete_training_data"
+  repeated AthleteTrainingDataModel athleteTrainingData=1;
+  //@inject_tag: json:"code"
+  uint32 Code=2;
+}
+
+
+message sampleMetricsGetByAthleteTrainingIdRequest{
+    //@inject_tag: json:"athlete_training_id"
+  uint32 AthleteTrainingId=1;
+}
+
+message sampleMetricsGetByAthleteTrainingIdResponse{
+  //@inject_tag: json:"sample_metrics"
+  repeated SampleMetricsModel sampleMetrics=1;
+    //@inject_tag: json:"code"
+  uint32 Code=2;
+}
+
+message sampleMetricsAddResponse{
+  //@inject_tag: json:"code"
+  uint32  Code = 1;
+  //@inject_tag: json:"msg"
+  string  Msg = 2;
+  //@inject_tag: json:"data"
+  string Data = 3;
+  //@inject_tag: json:"id"
+  uint32 Id=4;
+}
+
+//查询先写三个 根据训练的名称查询 训练的时间查询 训练的项目查询
+service RowDataService{
+  rpc TrainingSummaryAdd(trainingSummaryAddRequest) returns(trainingSummaryAddResponse);
+  rpc TrainingSummaryGetByTrainingName(trainingSummaryGetByTrainingNameRequest) returns(trainingSummaryResponse);
+  rpc TrainingSummaryGetByTrainDate(trainingSummaryGetByTrainDateRequest) returns(trainingSummaryResponse);
+  rpc TrainingSummaryGetByEvent(trainingSummaryGetByEventRequest) returns(trainingSummaryResponse);
+  rpc TrainingSummaryGet(trainingSummaryGetRequset) returns (trainingSummaryGetResponse);
+
+  rpc AthleteTrainingDataAdd(athleteTrainingDataAddRequest) returns (athleteTrainingDataAddResponse);
+  rpc AthleteTrainingDataGetByName(athleteTrainingDataGetByName) returns (athleteTrainingDataResponse);
+  rpc AthleteTrainingDataGet(athleteTrainingDataGetRequest) returns (athleteTrainingDataGetResponse);
+
+  rpc SampleMetricsAdd(SampleMetricsModel) returns (sampleMetricsAddResponse);
+  rpc SampleMetricsGetByAthleteTrainingId(sampleMetricsGetByAthleteTrainingIdRequest) returns (sampleMetricsGetByAthleteTrainingIdResponse);
+  
+}

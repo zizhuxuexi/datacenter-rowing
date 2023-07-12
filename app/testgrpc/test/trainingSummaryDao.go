@@ -3,6 +3,7 @@ package dao
 import (
 	"context"
 	"errors"
+
 	"github.com/zizhuxuexi/datacenter-rowing/app/rowdata/internal/repository/db/model"
 
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -67,7 +68,7 @@ func (dao *TrainingSummaryDao) CheckExist(req *pb.TrainingSummaryAddRequest) boo
 	}
 }
 
-func BuildTrainingSummary(item model.TrainingSummary) *pb.TrainingSummaryModel {
+func BuildTrainingSummarytest(item model.TrainingSummary) *pb.TrainingSummaryModel {
 	trainingSummaryModel := pb.TrainingSummaryModel{
 		TrainingId:      uint32(item.TrainingId),
 		TrainingName:    item.TrainingName,

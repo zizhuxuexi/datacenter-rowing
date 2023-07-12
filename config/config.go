@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/spf13/viper"
@@ -13,6 +14,7 @@ type Config struct {
 	MySQL    *MySQL              `yaml:"mysql"`
 	Redis    *Redis              `yaml:"redis"`
 	Etcd     *Etcd               `yaml:"etcd"`
+	Consul   *Consul             `yaml:"consul"`
 	Services map[string]*Service `yaml:"services"`
 	Domain   map[string]*Domain  `yaml:"domain"`
 }
@@ -43,10 +45,15 @@ type Etcd struct {
 	Address string `yaml:"address"`
 }
 
+type Consul struct {
+	Host string `yaml:"host"`
+	Port int    `yaml:"port"`
+}
+
 type Service struct {
-	Name        string   `yaml:"name"`
-	LoadBalance bool     `yaml:"loadBalance"`
-	Addr        []string `yaml:"addr"`
+	Name        string `yaml:"name"`
+	LoadBalance bool   `yaml:"loadBalance"`
+	Addr        string `yaml:"addr"`
 }
 
 type Domain struct {
@@ -55,6 +62,7 @@ type Domain struct {
 
 func InitConfig() {
 	workDir, _ := os.Getwd()
+	fmt.Println(workDir)
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath(workDir + "/config")

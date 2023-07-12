@@ -1,0 +1,270 @@
+syntax="proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package idl;
+option go_package="./pb/rowdata;rowdata";
+
+message TrainingSummaryModel{
+  //@inject_tag: json:"training_id"
+  uint32 TrainingId=1;
+  //@inject_tag: json:"training_name"
+  string TrainingName=2;
+  //@inject_tag: json:"train_date"
+  google.protobuf.Timestamp TrainDate=3;
+  //@inject_tag: json:"event_gender"
+  string EventGender=4;
+  //@inject_tag: json:"event_people_type"
+  string EventPeopleType=5;
+  //@inject_tag: json:"event_scale"
+  string EventScale=6;
+  //@inject_tag: json:"event"
+  string Event=7;
+  //@inject_tag: json:"weather"
+  string Weather=8;
+  //@inject_tag: json:"temp"
+  int32 Temp=9;
+  //@inject_tag: json:"wind_dir"
+  string WindDir=10;
+  //@inject_tag: json:"loc"
+  string Loc=11;
+  //@inject_tag: json:"coach"
+  string Coach=12;
+  //@inject_tag: json:"sample_count"
+  int32 SampleCount=13;
+  //@inject_tag: json:"remark"
+  string Remark=14;
+}
+
+message AthleteTrainingDataModel{
+  //@inject_tag: json:"athlete_training_id"
+  uint32 AthleteTrainingId=1;
+  //@inject_tag: json:"training_id"
+  uint32 TrainingId=2;
+  //@inject_tag: json:"name"
+  string Name=3;
+  //@inject_tag: json:"gender"
+  string Gender=4;
+  //@inject_tag: json:"seat"
+  int32 Seat=5;
+  //@inject_tag: json:"side"
+  int32 Side=6;
+  //@inject_tag: json:"height"
+  float Height=7;
+  //@inject_tag: json:"weight"
+  float Weight=8;
+  //@inject_tag: json:"oar_inboard"
+  float OarInboard=9;
+  //@inject_tag: json:"oar_length"
+  float OarLength=10;
+  //@inject_tag: json:"oar_blade_length"
+  float OarBladeLength=11;
+}
+
+message SampleMetricsModel {
+  //@inject_tag: json:"id"
+  uint32 id = 1;
+  //@inject_tag: json:"athlete_training_id"
+  uint32 athlete_training_id = 2;
+  //@inject_tag: json:"data_sample"
+  string data_sample = 3;
+  //@inject_tag: json:"stroke_rate"
+  double stroke_rate = 4;
+  //@inject_tag: json:"drive_time"
+  double drive_time = 5;
+  //@inject_tag: json:"rhythm"
+  double rhythm = 6;
+  //@inject_tag: json:"catch_angle"
+  double catch_angle = 7;
+  //@inject_tag: json:"finish_angle"
+  double finish_angle = 8;
+  //@inject_tag: json:"total_angle"
+  double total_angle = 9;
+  //@inject_tag: json:"catch_slip"
+  double catch_slip = 10;
+  //@inject_tag: json:"release_slip"
+  double release_slip = 11;
+  //@inject_tag: json:"effective_angle_percent"
+  double effective_angle_percent = 12;
+  //@inject_tag: json:"max_blade_depth"
+  double max_blade_depth = 13;
+  //@inject_tag: json:"blade_efficiency"
+  double blade_efficiency = 14;
+  //@inject_tag: json:"rowing_power"
+  double rowing_power = 15;
+  //@inject_tag: json:"work_per_stroke"
+  double work_per_stroke = 16;
+  //@inject_tag: json:"relative_wp_s"
+  double relative_wp_s = 17;
+  //@inject_tag: json:"effective_angle_degree"
+  double effective_angle_degree = 18;
+  //@inject_tag: json:"target_angle"
+  double target_angle = 19;
+  //@inject_tag: json:"target_force"
+  double target_force = 20;
+  //@inject_tag: json:"target_wp_s"
+  double target_wp_s = 21;
+  //@inject_tag: json:"angle_div_target"
+  double angle_div_target = 22;
+  //@inject_tag: json:"force_div_target"
+  double force_div_target = 23;
+  //@inject_tag: json:"wp_s_div_target"
+  double wp_s_div_target = 24;
+  //@inject_tag: json:"average_velocity"
+  double average_velocity = 25;
+  //@inject_tag: json:"blade_specific_impulse"
+  double blade_specific_impulse = 26;
+  //@inject_tag: json:"time_over_2000m"
+  double time_over_2000m = 27;
+  //@inject_tag: json:"max_force"
+  double max_force = 28;
+  //@inject_tag: json:"average_force"
+  double average_force = 29;
+  //@inject_tag: json:"ratio_aver_div_max_force"
+  double ratio_aver_div_max_force = 30;
+  //@inject_tag: json:"position_of_peak_force"
+  double position_of_peak_force = 31;
+  //@inject_tag: json:"catch_force_gradient"
+  double catch_force_gradient = 32;
+  //@inject_tag: json:"finish_force_gradient"
+  double finish_force_gradient = 33;
+  //@inject_tag: json:"max_handle_velocity"
+  double max_handle_velocity = 34;
+  //@inject_tag: json:"hdf"
+  double hdf = 35;
+  //@inject_tag: json:"legs_drive"
+  double legs_drive = 36;
+  //@inject_tag: json:"legs_max_speed"
+  double legs_max_speed = 37;
+  //@inject_tag: json:"catch_factor"
+  double catch_factor = 38;
+  //@inject_tag: json:"rowing_style_factor"
+  double rowing_style_factor = 39;
+  //@inject_tag: json:"release_wash"
+  double release_wash = 40;
+  //@inject_tag: json:"aver_force_div_weight"
+  double aver_force_div_weight = 41;
+  //@inject_tag: json:"vseat_at_catch"
+  double vseat_at_catch = 42;
+  //@inject_tag: json:"handle_travel_at_entry_force"
+  double handle_travel_at_entry_force = 43;
+  //@inject_tag: json:"handle_travel_at_70per_force"
+  double handle_travel_at_70per_force = 44;
+  //@inject_tag: json:"handle_travel_at_0as"
+  double handle_travel_at_0as = 45;
+  //@inject_tag: json:"seat_travel_at_entry_force"
+  double seat_travel_at_entry_force = 46;
+  //@inject_tag: json:"seat_travel_at_70per_force"
+  double seat_travel_at_70per_force = 47;
+  //@inject_tag: json:"seat_travel_at_0as“
+  double seat_travel_at_0as = 48;
+  //@inject_tag: json:"d_travel_at_entry_force_percent"
+  double d_travel_at_entry_force_percent = 49;
+  //@inject_tag: json:"d_travel_at_70per_force_percent"
+  double d_travel_at_70per_force_percent = 50;
+  //@inject_tag: json:"d_travel_at_0as_percent"
+  double d_travel_at_0as_percent = 51;
+  //@inject_tag: json:"d_travel_at_entry_force_distance"
+  double d_travel_at_entry_force_distance = 52;
+  //@inject_tag: json:"d_travel_at_70per_force_distance"
+  double d_travel_at_70per_force_distance = 53;
+  //@inject_tag: json:"d_travel_at_0as_distance"
+  double d_travel_at_0as_distance = 54;
+  //@inject_tag: json:"seat_on_recovery"
+  double seat_on_recovery = 55;
+  //@inject_tag: json:"vert_at_catch"
+  double vert_at_catch = 56;
+  //@inject_tag: json:"entry_force"
+  double entry_force = 57;
+  //@inject_tag: json:"force_upto_70per"
+  double force_upto_70per = 58;
+  //@inject_tag: json:"max_vseat"
+  double max_vseat = 59;
+  //@inject_tag: json:"peak_force"
+  double peak_force = 60;
+  //@inject_tag: json:"force_from_70per"
+  double force_from_70per = 61;
+  //@inject_tag: json:"vert_at_finish"
+  double vert_at_finish = 62;
+  //@inject_tag: json:"force_at_finish"
+  double force_at_finish = 63;
+  //@inject_tag: json:"average_boat_speed"
+  double average_boat_speed = 64;
+  //@inject_tag: json:"minimal_boat_speed"
+  double minimal_boat_speed = 65;
+  //@inject_tag: json:"maximal_boat_speed"
+  double maximal_boat_speed = 66;
+  //@inject_tag: json:"distance_per_stroke"
+  double distance_per_stroke = 67;
+  //@inject_tag: json:"drag_factor"
+  double drag_factor = 68;
+  //@inject_tag: json:"wind_forward_comp_rel_water"
+  double wind_forward_comp_rel_water = 69;
+  //@inject_tag: json:"wind_direction_rel_water"
+  double wind_direction_rel_water = 70;
+  //@inject_tag: json:"time_250m"
+  double time_250m = 71;
+  //@inject_tag: json:"boat_speed_efficiency"
+  double boat_speed_efficiency = 72;
+  //@inject_tag: json:"time_at_water_temp_25deg"
+  double time_at_water_temp_25deg = 73;
+  //@inject_tag: json:"boat_speed_variation"
+  double boat_speed_variation = 74;
+  //@inject_tag: json:"wind_speed_rel_boat"
+  double wind_speed_rel_boat = 75;
+  //@inject_tag: json:"wind_direction_rel_boat"
+  double wind_direction_rel_boat = 76;
+  //@inject_tag: json:"acceleration_minimun"
+  double acceleration_minimun = 77;
+  //@inject_tag: json:"acceleration_maximum"
+  double acceleration_maximum = 78;
+  //@inject_tag: json:"model_speed"
+  double model_speed = 79;
+  //@inject_tag: json:"effective_work_per_stroke"
+  double effective_work_per_stroke = 80;
+  //@inject_tag: json:"model_dps"
+  double model_dps = 81;
+  //@inject_tag: json:"propulsive_power"
+  double propulsive_power = 82;
+  //@inject_tag: json:"drive_maximal_at"
+  double drive_maximal_at = 83;
+  //@inject_tag: json:"first_peak"
+  double first_peak = 84;
+  //@inject_tag: json:"zerso_before_catch"
+  double zero_before_catch = 85;
+  //@inject_tag: json:"minimal_from_catch"
+  double minimal_from_catch = 86;
+  //@inject_tag: json:"zero_after_catch"
+  double zero_after_catch = 87;
+  //@inject_tag: json:"std_deviation"
+  double std_deviation = 88;
+  //@inject_tag: json:"oar_angle"
+  repeated double oar_angle = 89 [packed=true];
+  //@inject_tag: json:"handle_force"
+  repeated double handle_force = 90 [packed=true];
+  //@inject_tag: json:"vertical_angle_boat_roll"
+  repeated double vertical_angle_boat_roll = 91 [packed=true];
+  //@inject_tag: json:"legs_velocity"
+  repeated double legs_velocity = 92 [packed=true];
+  //@inject_tag: json:"handle_speed"
+  repeated double handle_speed = 93 [packed=true];
+  //@inject_tag: json:"hdf_fig"
+  repeated double hdf_fig = 94 [packed=true];
+  //@inject_tag: json:"blade_df"
+  repeated double blade_df = 95 [packed=true];
+  //@inject_tag: json:"velocity"
+  repeated double velocity = 96 [packed=true];
+  //@inject_tag: json:"boat_acceleration"
+  repeated double boat_acceleration = 97 [packed=true];
+  //@inject_tag: json:"velocity_rel"
+  repeated double velocity_rel = 98 [packed=true];
+  //@inject_tag: json:"drag_factor_f"
+  double drag_factor_f = 99;
+  //@inject_tag: json:"drag_factor_pprop"
+  double drag_factor_pprop = 100;
+    //@inject_tag: json:"drag_factor_pold"
+  double drag_factor_pold = 101;
+    //@inject_tag: json:"drag_factor_ptot"
+  double drag_factor_ptot = 102;
+}
+
