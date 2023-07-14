@@ -1,31 +1,14 @@
-server:
-  port: :4000
-  version: 1.0
-  jwtSecret: 38324
-
 mysql:
   driverName: mysql
-  host: 127.0.0.1
+  host: mysql.sports-data-center.svc.cluster.local
   port: 3306
-  database: row_data
+  database: training
   username: root
-  password: rootroot
+  password: 12345678
   charset: utf8mb4
 
-
-consul:
-  host: 127.0.0.1
-  port: 8500
-
 services:
-  row-data:
-    name: row-data
-    loadBalance: false
-    addr: 127.0.0.1:10001
-
-
-domain:
-  user:
-    name: user
-  task:
-    name: task
+  rowdata:
+    name: rowdata.sports-data-center.svc.cluster.local
+    namespace: sports-data-center
+    port: 10001

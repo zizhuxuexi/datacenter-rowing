@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"os"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -90,6 +91,11 @@ func (c *RowDataController) UploadMultiRowData(ctx *gin.Context, client pb.RowDa
 	trainingId := c.rowDataService.ProcessExcels(excelnames, &rowDataUploadInfo, client)
 	for _, filename := range excelnames {
 		c.rowDataService.ProcessAthleteTrainingData(filename, trainingId, client)
+		err = os.Remove(filename)
+		if err != nil {
+			panic(err)
+		}
+
 	}
 
 	//返回上传成功的响应

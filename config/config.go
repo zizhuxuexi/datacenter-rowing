@@ -51,9 +51,9 @@ type Consul struct {
 }
 
 type Service struct {
-	Name        string `yaml:"name"`
-	LoadBalance bool   `yaml:"loadBalance"`
-	Addr        string `yaml:"addr"`
+	Name      string `yaml:"name"`
+	Namespace string `yaml:"namespace"`
+	Port      int    `yaml:"port"`
 }
 
 type Domain struct {

@@ -15,18 +15,12 @@ func main() {
 	config.InitConfig()
 	dao.InitDB()
 
-	// //在consul注册服务
-	// consulHost := config.Conf.Consul.Host
-	// consulPort := config.Conf.Consul.Port
-	// //服务注册
-	// registryDiscoveryClient, err := discovery.NewConsulServiceRegistry(consulHost, consulPort, "")
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// //服务实例
-	// serviceInstanceInfo, _ := discovery.NewDefaultServiceInstance("rowdata-service")
+	// grpcAddress := config.Conf.Services["row-data"].Addr
+	// serviceName := config.Conf.Services["rowdata"].Name
+	// port := config.Conf.Services["rowdata"].Port
+	// grpcAddress := fmt.Sprintf("%s:%d", serviceName, port)
+	grpcAddress := "0.0.0.0:10001"
 
-	grpcAddress := config.Conf.Services["row-data"].Addr
 	server := grpc.NewServer()
 	defer server.Stop()
 	pb.RegisterRowDataServiceServer(server, service.GetRowDataSrv())
@@ -39,5 +33,4 @@ func main() {
 	if err := server.Serve(lis); err != nil {
 		panic(err)
 	}
-
 }

@@ -1,0 +1,23 @@
+# 基础镜像
+FROM golang:1.20
+
+# 设置工作目录
+WORKDIR /app
+
+COPY ./go.mod ./
+COPY ./go.sum ./
+
+RUN go mod download && go mod verify
+
+COPY ./config ./config
+COPY ./idl ./idl
+COPY ./pkg ./pkg
+COPY ./app/rowdata ./app/rowdata
+
+EXPOSE 10001
+
+RUN go build -o rowdata ./app/rowdata/cmd/main.go
+
+# 设置容器启动命令
+
+CMD ["./rowdata"]

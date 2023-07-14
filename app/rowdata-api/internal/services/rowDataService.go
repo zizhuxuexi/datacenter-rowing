@@ -280,7 +280,7 @@ func (s *RowDataService) ProcessAthleteTrainingData(filename string, trainingId 
 
 	for key, value := range sampleArr {
 		sampleNum := value
-		fmt.Println(key)
+		// fmt.Println(key)
 		sheetnameT8d := "T8d_" + strconv.Itoa(key+1)
 		sheetnameB8d := "B8d_" + strconv.Itoa(key+1)
 		sheetnameT8dFig := "T8d_Fig_" + strconv.Itoa(key+1)
